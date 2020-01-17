@@ -1,0 +1,2 @@
+{ "prover": "why3:CVC4,1.7,counterexamples", "verdict": "timeout",
+  "time": 360. }

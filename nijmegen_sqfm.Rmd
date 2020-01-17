@@ -1,0 +1,176 @@
+---
+  title: "Software quality and formal methods: Hoare/Dijkstra approach"
+  author: "Dr. Ivan S. Zapreev"
+  institute: "Neat Software Designs"
+  date: "`r format(Sys.Date())`"
+  output:
+    beamer_presentation:
+      slide_level: 2
+      theme: "Hannover"
+      colortheme: "lily"
+      fonttheme: "professionalfonts"
+---
+
+---
+**Outline:**
+
++ Software Quality
+    + $\color{gray}{\footnotesize{\text{Motivating Examples}}}$
+    + $\color{gray}{\footnotesize{\text{Software Development}}}$
+    + $\color{gray}{\footnotesize{\text{Formal Verification}}}$
++ Programming Languages
+    + $\color{gray}{\footnotesize{\text{Language generations}}}$
+    + $\color{gray}{\footnotesize{\text{Imperative programming}}}$
+    + $\color{gray}{\footnotesize{\text{ANSI-C}}}$
++ Scientific Approach
+    + $\color{gray}{\footnotesize{\text{Various methods}}}$
+    + $\color{gray}{\footnotesize{\text{Software verification}}}$
+    + $\color{gray}{\footnotesize{\text{Hoare/Dijkstra approach}}}$
++ Frama - C
+    + $\color{gray}{\footnotesize{\text{Platform description}}}$
+    + $\color{gray}{\footnotesize{\text{Plugins overview}}}$
+    + $\color{gray}{\footnotesize{\text{Introduction to ACSL}}}$
++ Verification Examples
++ Concluding remarks
+
+# Software Quality
+
+## Motivating Examples: Major
+
+* `1985`--`1987` -- *Therac-25:*
+    * Radiation therapy overdose
+    * Control software flaw:
+        * Race conditions
+    * Death of `6` (six) cancer patients
+* `1996`  -- *Ariane-5 missile:*
+    * Missile crash
+    * Control software flaw:
+        * `64`-bit float to `16`-bit int
+    * $`7` billion development program
+    * $`500` million cargo
+* `2005` -- *Toyota Camry:*
+    * Sudden unintended acceleration:
+    * Control software flaw:
+        * Recursion causing stack overflow
+    * `89` deaths and `57` injuries
+    * $`1.2` billion compensations
+    
+## Motivating Examples: More
+
+The 12 Software Bugs That Caused Epic Failures:  [$\underline{\color{blue}{\text{<link>}}}$](https://www.testbytes.net/blog/12-software-bugs-that-caused-epic-failure/)
+
+![](./images/bugs_everywhere.png){height=70%}
+
+## Software Development: V-model
+
+![Software development process](./images/v_model.png){height=70%}
+
+## Software Development: V & V
+Is formally defined in, e.g.: [`ISO-9000:2015`](https://www.iso.org/obp/ui/#iso:std:iso:9000:ed-4:v1:en:term:3.8.12):
+
+* **Verification** -- *"Confirmation, through the provision of objective evidence, that specified requirements have been fulfilled."*
+* **Validation** -- *"Confirmation, through the provision of objective evidence, that the requirements for a specific intended use or application have been fulfilled."*
+
+## Software Development: Testing
+
+* **Verification**:
+    * Are we building the product right?
+    * Does the system comply with its specification?
+* **Validation**:
+    * Are we building the right product?
+    * Does the system meet the needs of the customer?
+
+![Devision of testing types](./images/testing.png){height=50%}
+
+## Formal Verification
+
+**Facts:**
+
+* No glabally recognized definition of Formal Methods[^1].
+* Local attempts to have one[^2], e.g.:
+
+> Formal methods are techniques used to model complex systems as mathematical entities. 
+
+>By building a rigorous model of a complex system, it is possible to verify the system's properties in a more thorough fashion than *empirical testing*.
+
+[^1]: "Formal Methods for Industrial Critical Systems", S. Gnesi, T. Margaria
+[^2]: ["Formal Methods", Michael Collins, CMU](https://users.ece.cmu.edu/~koopman/des_s99/formal_methods/)
+
+**Conclusion:**
+
+Formal methods are techniques suitable for Verification.
+
+## Formal Software Verification
+
+A program shall satisfy a formal specification of its behavior.
+
+![Verification methods](./images/verification_techniques_marked.png){height=70%}
+
+# Programming Languages
+
+## Language generations
+
+![Generations of Programming languages](./images/languages.png){height=70%}
+  
+## Imperative programming: Main
+
+* *Imperative* -- Describes computation in terms of statements that change a program state. Imperative JavaScript example:
+```{js, eval=F}
+        function sum(a, b) {
+          return a + b;
+        }
+        console.log( sum(5, 3) );
+```
+* *Declarative* -- Expresses what to accomplish without specifying concrete steps. Declarative JavaScript example:
+```{js, eval=F}
+        const sum = a => b => a + b;
+        console.log( sum (5) (3) );
+```
+
+*Procedural language* -- is an imperative language in which the program is built from one or more subroutines. 
+
+## Imperative programming: Test
+
+![If you laugh, it means you've passed](./images/imp-decl-joke.png){height=110%}
+
+## ANSI-C
+An *imperatice* *procedral* language.
+  
+# Scientific Approache
+
+## Overview
+
+## Formal Methods
+
+## Hoare/Dijkstra approach
+  
+# Frama - C
+  
+## General info
+
+A plugin-based open-source cross-platform framework for `C` source-code analysis:
+
+* Browsing unfamiliar code
+* Static code analysis
+* Dynamic code analysis
+* Code transformations
+* Certification of critical software
+
+You can easily build upon the existing plug-ins to implement your own analysis. 
+
+## Plugins overview
+
+![Frama-C plugins](./images/frama-c.png)
+
+## Weakest Precondition plugin
+
+![Frama-C WP plugin](./images/frama-c.wp.png)
+
+## Verification Process
+
+## ACSL: General
+  
+# Verification Examples
+  
+# Concluding remarks
+  
