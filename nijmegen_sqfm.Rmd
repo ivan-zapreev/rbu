@@ -17,15 +17,15 @@
 + Software Quality
     + $\color{gray}{\footnotesize{\text{Motivating Examples}}}$
     + $\color{gray}{\footnotesize{\text{Software Development}}}$
-    + $\color{gray}{\footnotesize{\text{Formal Verification}}}$
+    + $\color{gray}{\footnotesize{\text{Software Verification}}}$
 + Programming Languages
     + $\color{gray}{\footnotesize{\text{Language generations}}}$
-    + $\color{gray}{\footnotesize{\text{Imperative programming}}}$
+    + $\color{gray}{\footnotesize{\text{Declarative vs. Imperative}}}$
     + $\color{gray}{\footnotesize{\text{ANSI-C}}}$
-+ Scientific Approach
-    + $\color{gray}{\footnotesize{\text{Various methods}}}$
-    + $\color{gray}{\footnotesize{\text{Software verification}}}$
-    + $\color{gray}{\footnotesize{\text{Hoare/Dijkstra approach}}}$
++ Formal Methods
+    + $\color{gray}{\footnotesize{\text{Formal Verification}}}$
+    + $\color{gray}{\footnotesize{\text{Hoare Approach}}}$
+    + $\color{gray}{\footnotesize{\text{Edsger Dijkstra}}}$
 + Frama - C
     + $\color{gray}{\footnotesize{\text{Platform description}}}$
     + $\color{gray}{\footnotesize{\text{Plugins overview}}}$
@@ -86,7 +86,7 @@ Is formally defined in, e.g.: [`ISO-9000:2015`](https://www.iso.org/obp/ui/#iso:
 
 **Facts:**
 
-* No glabally recognized definition of Formal Methods[^1].
+* No globally recognized definition of Formal Methods[^1].
 * Local attempts to have one[^2], e.g.:
 
 > Formal methods are techniques used to model complex systems as mathematical entities. 
@@ -100,11 +100,13 @@ Is formally defined in, e.g.: [`ISO-9000:2015`](https://www.iso.org/obp/ui/#iso:
 
 Formal methods are techniques suitable for Verification.
 
-## Formal Software Verification
+## Software Verification
+
+**Goal:**
 
 A program shall satisfy a formal specification of its behavior.
 
-![Verification methods](./images/verification_techniques_marked.png){height=70%}
+![Verification methods](./images/verification_techniques.png){height=60%}
 
 # Programming Languages
 
@@ -112,43 +114,94 @@ A program shall satisfy a formal specification of its behavior.
 
 ![Generations of Programming languages](./images/languages.png){height=70%}
   
-## Imperative programming: Main
+## Declarative vs. Imperative: Main
 
-* *Imperative* -- Describes computation in terms of statements that change a program state. Imperative JavaScript example:
+* *Declarative* -- Expresses what to accomplish without specifying concrete steps.
 ```{js, eval=F}
-        function sum(a, b) {
-          return a + b;
-        }
-        console.log( sum(5, 3) );
+    //Declarative `JavaScript`
+    var arr_dbl = arr.map((x) => x * 2)
 ```
-* *Declarative* -- Expresses what to accomplish without specifying concrete steps. Declarative JavaScript example:
+* *Imperative* -- Describes computation in terms of statements that change a program state.
 ```{js, eval=F}
-        const sum = a => b => a + b;
-        console.log( sum (5) (3) );
+    //Imperative `JavaScript`
+    var arr_dbl = []
+    for (let i = 0; i < arr.length; i++) {
+      arr_dbl.push(arr[i] * 2)
+    }
 ```
 
-*Procedural language* -- is an imperative language in which the program is built from one or more subroutines. 
-
-## Imperative programming: Test
+## Declarative vs. Imperative: Test
 
 ![If you laugh, it means you've passed](./images/imp-decl-joke.png){height=110%}
 
-## ANSI-C
-An *imperatice* *procedral* language.
-  
-# Scientific Approache
+## ANSI-C: Just an old C
 
-## Overview
+**Procedural language:**
 
-## Formal Methods
+Is an imperative language in which the program is built from one or more subroutines commonly known as `functions`. 
 
-## Hoare/Dijkstra approach
+**`C` language:**
+
+`C` is an *imperative* *procedural* language.
+
+**ANSI-C:**
+
+`ANSI-C` is a common name for two equivalent language specs:
+
+* `C89` by American National Standards Institute (ANSI)
+* `C90` by International Organization for Standardization (ISO) 
+
+# Formal Methods
+
+## Formal verification
+
+**Question:** Does formal *validation* exist?
+
+![Verification methods](./images/verification_techniques_marked.png){height=55%}
+
+*Prove* conformance to specifications for *imperative programs*.
+
+## Hoare Approach[^3]
+
+**Hoare triples**: $\left\{P\right\}C\left\{Q\right\}$
+
+$C$ - code; $P$ - pre-condition; $Q$ - post-condition;
+
+**Axioms**, e.g. *Skip* and *Assign*: 
+$$\textstyle{\frac{-}{\left\{P\right\} skip \left\{P\right\}}\;\text{and}\;\frac{-}{\left\{P\left[E/V\right]\right\} V := E \left\{P\right\}}}$$
+Where $E$ is any expression and $V$ is any variable.
+
+**Inference rules**, e.g. *Composition* and *Conditional*:
+$$\textstyle{\frac{\left\{P\right\}S_{1}\left\{R\right\},\;\left\{R\right\}S_{2}\left\{Q\right\}}{\left\{P\right\}S_{1};\;S_{2}\left\{Q\right\}}\;\text{and}\;\frac{\left\{B\wedge P\right\}S\left\{Q\right\},\;\left\{\lnot B\wedge P\right\}T\left\{Q\right\}}{\left\{P\right\}\;\mathbf{if}\;B\;\mathbf{then}\;S\;\mathbf{else}\;T\;\mathbf{elseif}\;\left\{Q\right\}}}$$
+
+**Partial correctness:**
+If $P$ holds before executing $C$ then $Q$ holds afterwards, if $C$ terminates.
+
+[^3]: "An Axiomatic Basis for Computer Programming", Tony Hoare, 1969.
+
+## Edsger Dijkstra[^4]
+
+The *weakest precondition calculus* for 
+* A predicate transform semantics to mechanize the proofs.
+* Explains how $C$ transforms $P$ into $Q$. 
+
+**Backward reasoning**:
+
+* Based on $Q$ and $C$ calculate the *weakest pre-condition* $\widehat{P}$ 
+* If $P \implies \widehat{P}$, then the proof is complete
+
+**Forward reasoning**:
+
+* Based on $P$ and $C$ calculate the *strongest post-condition* $\widehat{Q}$ 
+* If $\widehat{Q} \implies Q$, then the proof is complete
+
+[^4]: "Guarded commands, non-determinacy and formal derivation of programs", Edsger Dijkstra, 1975
   
 # Frama - C
   
-## General info
+## Platform description
 
-A plugin-based open-source cross-platform framework for `C` source-code analysis:
+A plug-in-based open-source cross-platform framework for `C` source-code analysis:
 
 * Browsing unfamiliar code
 * Static code analysis
@@ -158,18 +211,18 @@ A plugin-based open-source cross-platform framework for `C` source-code analysis
 
 You can easily build upon the existing plug-ins to implement your own analysis. 
 
-## Plugins overview
+## Plugins overview: Main
 
 ![Frama-C plugins](./images/frama-c.png)
 
-## Weakest Precondition plugin
+## Plugins overview: WP
 
 ![Frama-C WP plugin](./images/frama-c.wp.png)
 
-## Verification Process
+## Introduction to ACSL
 
-## ACSL: General
-  
+
+
 # Verification Examples
   
 # Concluding remarks
