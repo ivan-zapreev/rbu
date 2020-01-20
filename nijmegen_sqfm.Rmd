@@ -125,7 +125,7 @@ A program shall satisfy a formal specification of its behavior.
 
 ## Language generations
 
-![Generations of Programming languages](./images/languages.png){height=70%}
+![Generations of Programming languages](./images/languages.png){height=75%}
   
 ## Declarative vs. Imperative: Main
 
