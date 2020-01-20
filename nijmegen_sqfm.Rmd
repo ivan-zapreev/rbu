@@ -332,9 +332,164 @@ https://frama-c.com/download/acsl_1.4.pdf
 * Verification Outcomes
 * The morale
 
-## Verification Examples
+## Verification Examples: abs(.)
 
+Consider a primitive integer absolute value computation:
 
+```{c, eval = F}
+  /*@
+      ensures \result >= 0;
+   */
+  int abs(int val) {
+    if(val < 0) return -val;
+    return val;
+  }
+```
+
+The verification shall return $\color{blue}{\bf{OK}}$, right?
+
+## Verification Examples: Issue #1
+
+**NOP** - the verification results are inconclusive:
+
+![WP detects a possible overflow](./images/overflow.png){height=60%}
+
+## Verification Examples: Issue #2
+
+Extend the specification with a pre-condition:
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures \result >= 0;
+   */
+  int abs(int val) {
+    if(val < 0) return -val;
+    return val;
+  }
+```
+
+The verification is $\color{blue}{\bf{OK}}$, but are we complete (?), consider:
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures \result >= 0;
+   */
+  int abs(int val) {
+    return 1;
+  }
+```
+
+## Verification Examples: Final?
+
+Explicit `\result` value specification makes it complete:
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures (val == 0 ==> \result == 0) && 
+              (val > 0 ==> \result == val) &&
+              (val < 0 ==> \result == -val);
+   */
+  int abs(int val) {
+    if(val < 0) return -val;
+    return val;
+  }
+```
+
+What if the implementation was wrong?
+
+Would we be able to identify the root-cause?
+
+## Verification Examples: Faulty
+
+Consider a faulty and lengthy implementation with 2 bugs:
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures (val == 0 ==> \result == 0) && 
+              (val > 0 ==> \result == val) &&
+              (val < 0 ==> \result == -val);
+   */
+  int abs(int val) {
+    if(val == 0) {
+      return 0;      //OK
+    } else {
+      if(val < 0) {
+        return val;  //BUG #1, should return -val
+      } else {
+        return -val; //BUG #2, should return val
+      }
+    }
+  }
+```
+
+## Verification Examples: Issue #3
+
+The verification is inconclusive, the entire post condition failed!
+
+![What is the actual reason?](./images/faulty.png){height=60%}
+
+## Verification Examples: Split
+
+What if we slit the specification?
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures (val == 0 ==> \result == 0);
+      ensures (val > 0 ==> \result == val);
+      ensures (val < 0 ==> \result == -val);
+   */
+  int abs(int val) {
+    if(val == 0) {
+      return 0;      //OK
+    } else {
+      if(val < 0) {
+        return val;  //BUG #1, should return -val
+      } else {
+        return -val; //BUG #2, should return val
+      }
+    }
+  }
+```
+## Verification Examples: Issue #3
+
+This is enough hint to know where to look:
+
+![Finding the root-causes](./images/split.png){height=60%}
+
+## Verification Examples: BUG #1
+
+What if we fix the first bug the specification?
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures (val == 0 ==> \result == 0);
+      ensures (val > 0 ==> \result == val);
+      ensures (val < 0 ==> \result == -val);
+   */
+  int abs(int val) {
+    if(val == 0) {
+      return 0;      //OK
+    } else {
+      if(val < 0) {
+        return -val; //OK
+      } else {
+        return -val; //BUG #2, should return val
+      }
+    }
+  }
+```
+
+## Verification Examples: Better!
+
+Fixing BUG #1 turns the corresponding post-conditions green!
+
+![Sequential issue resolution](./images/bug_1.png){height=60%}
+
+## Verification Examples: Fixed
+
+Fixing BUG #2 yields an $\color{blue}{\bf{OK}}$ verification result!
+
+![Now we are all fine](./images/all_ok.png){height=60%}
 
 ## Verification Outcomes
 
