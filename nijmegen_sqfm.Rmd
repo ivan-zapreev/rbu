@@ -227,7 +227,7 @@ The *weakest precondition calculus* for
   
 ## Platform description
 
-A plug-in-based open-source cross-platform framework for `C` source-code analysis:
+A plug-in-based open-source cross-platform framework for ANSI-`C` source-code analysis:
 
 * Browsing unfamiliar code
 * Static code analysis
@@ -352,7 +352,7 @@ The verification shall return $\color{blue}{\bf{OK}}$, right?
 
 **NOP** - the verification results are inconclusive:
 
-![WP detects a possible overflow](./images/overflow.png){height=60%}
+![WP detects a possible overflow](./images/overflow.png){height=70%}
 
 ## Verification Examples: Issue #2
 
@@ -381,7 +381,7 @@ The verification is $\color{blue}{\bf{OK}}$, but are we complete (?), consider:
 
 ## Verification Examples: Final?
 
-Explicit `\result` value specification makes it complete:
+An explicit `\result` value specification makes it complete:
 
 ```{c, eval = F}
   /*@ requires INT_MIN < val;
@@ -401,7 +401,7 @@ Would we be able to identify the root-cause?
 
 ## Verification Examples: Faulty
 
-Consider a faulty and lengthy implementation with 2 bugs:
+Consider a lengthy and potentially buggy implementation:
 
 ```{c, eval = F}
   /*@ requires INT_MIN < val;
@@ -411,12 +411,12 @@ Consider a faulty and lengthy implementation with 2 bugs:
    */
   int abs(int val) {
     if(val == 0) {
-      return 0;      //OK
+      return 0;
     } else {
       if(val < 0) {
-        return val;  //BUG #1, should return -val
+        return val;
       } else {
-        return -val; //BUG #2, should return val
+        return -val;
       }
     }
   }
@@ -426,11 +426,41 @@ Consider a faulty and lengthy implementation with 2 bugs:
 
 The verification is inconclusive, the entire post condition failed!
 
-![What is the actual reason?](./images/faulty.png){height=60%}
+![What is the actual reason?](./images/faulty.png){height=70%}
 
 ## Verification Examples: Split
 
-What if we slit the specification?
+What if we split the post-condition from:
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures (val == 0 ==> \result == 0) &&
+              (val > 0 ==> \result == val) &&
+              (val < 0 ==> \result == -val);
+   */
+```
+
+into separate statements:
+
+```{c, eval = F}
+  /*@ requires INT_MIN < val;
+      ensures (val == 0 ==> \result == 0);
+      ensures (val > 0 ==> \result == val);
+      ensures (val < 0 ==> \result == -val);
+   */
+```
+
+and then run verification again!
+
+## Verification Examples: Insights
+
+This is enough hint to know where to look:
+
+![Finding the root-causes](./images/split.png){height=70%}
+
+## Verification Examples: Bugs
+
+Now we can identify the actual bugs:
 
 ```{c, eval = F}
   /*@ requires INT_MIN < val;
@@ -450,46 +480,18 @@ What if we slit the specification?
     }
   }
 ```
-## Verification Examples: Issue #3
 
-This is enough hint to know where to look:
-
-![Finding the root-causes](./images/split.png){height=60%}
-
-## Verification Examples: BUG #1
-
-What if we fix the first bug the specification?
-
-```{c, eval = F}
-  /*@ requires INT_MIN < val;
-      ensures (val == 0 ==> \result == 0);
-      ensures (val > 0 ==> \result == val);
-      ensures (val < 0 ==> \result == -val);
-   */
-  int abs(int val) {
-    if(val == 0) {
-      return 0;      //OK
-    } else {
-      if(val < 0) {
-        return -val; //OK
-      } else {
-        return -val; //BUG #2, should return val
-      }
-    }
-  }
-```
-
-## Verification Examples: Better!
+## Verification Examples: Issue #4
 
 Fixing BUG #1 turns the corresponding post-conditions green!
 
-![Sequential issue resolution](./images/bug_1.png){height=60%}
+![Sequential issue resolution](./images/bug_1.png){height=70%}
 
-## Verification Examples: Fixed
+## Verification Examples: Issue #5
 
 Fixing BUG #2 yields an $\color{blue}{\bf{OK}}$ verification result!
 
-![Now we are all fine](./images/all_ok.png){height=60%}
+![Now we are all fine](./images/all_ok.png){height=70%}
 
 ## Verification Outcomes
 
@@ -514,7 +516,25 @@ If the proof is $\color{red}{\bf{NOK}}$:
 ![It is not so easy but ... ](./images/easy.jpg){height=70%}
 
 # Concluding remarks
-  
-* We had an overview of 
 
-* Questions?
+We have looked into:
+
+* Software quality and software engineering
+* Programming language classification
+* Formalization of software verification
+* Hoare/Dijkstra approach to formal proving
+* Frama-C a platform for ANSI-C code analysis
+* Experienced practical program verification
+
+We can conclude that:
+
+* Formal software verification is useful
+* It is not yet fully automated
+* There is a lot more to learn about it!
+
+$\bf{\color{blue}{\text{Thank you}}}$ and are there any $\bf{\color{red}{\text{questions}}}$?
+
+## I appreciate your time!
+
+![It was great to give you a talk!](./images/thanks.jpg){height=70%}
+

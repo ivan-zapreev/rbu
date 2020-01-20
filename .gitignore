@@ -1,3 +1,4 @@
 *.bak
 */*.frama-c
 .DS_Store
+a.out
