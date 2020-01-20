@@ -29,7 +29,7 @@
 + Frama - C
     + $\color{gray}{\footnotesize{\text{Platform description}}}$
     + $\color{gray}{\footnotesize{\text{Plugins overview}}}$
-    + $\color{gray}{\footnotesize{\text{Introduction to ACSL}}}$
+    + $\color{gray}{\footnotesize{\text{What is ACSL}}}$
 + Verification Examples
 + Concluding remarks
 
@@ -157,7 +157,7 @@ Is an imperative language in which the program is built from one or more subrout
 
 **Question:** Does formal *validation* exist?
 
-![Verification methods](./images/verification_techniques_marked.png){height=55%}
+![Formal correctness proving](./images/verification_techniques_marked.png){height=55%}
 
 *Prove* conformance to specifications for *imperative programs*.
 
@@ -175,13 +175,14 @@ Where $E$ is any expression and $V$ is any variable.
 $$\textstyle{\frac{\left\{P\right\}S_{1}\left\{R\right\},\;\left\{R\right\}S_{2}\left\{Q\right\}}{\left\{P\right\}S_{1};\;S_{2}\left\{Q\right\}}\;\text{and}\;\frac{\left\{B\wedge P\right\}S\left\{Q\right\},\;\left\{\lnot B\wedge P\right\}T\left\{Q\right\}}{\left\{P\right\}\;\mathbf{if}\;B\;\mathbf{then}\;S\;\mathbf{else}\;T\;\mathbf{elseif}\;\left\{Q\right\}}}$$
 
 **Partial correctness:**
-If $P$ holds before executing $C$ then $Q$ holds afterwards, if $C$ terminates.
+If $P$ holds before executing $C$ then $Q$ holds afterwards, ONLY if $C$ terminates.
 
 [^3]: "An Axiomatic Basis for Computer Programming", Tony Hoare, 1969.
 
 ## Edsger Dijkstra[^4]
 
 The *weakest precondition calculus* for 
+
 * A predicate transform semantics to mechanize the proofs.
 * Explains how $C$ transforms $P$ into $Q$. 
 
@@ -219,9 +220,82 @@ You can easily build upon the existing plug-ins to implement your own analysis.
 
 ![Frama-C WP plugin](./images/frama-c.wp.png)
 
-## Introduction to ACSL
+## What is ACSL: General
 
+In short:
 
+* ACSL -- ANSI/ISO C Specification Language
+* Allows to formally specify properties of a C program
+
+It is all about function contracts:
+
+```{c, eval=F}
+  /*@ ensures \result >= x && \result >= y;
+      ensures \result == x || \result == y;
+   */
+  int max (int x, int y) {
+    return(x > y) ? x : y;
+  }
+```
+
+A function contract is a combination of:
+
+* post-conditions - `ensures`
+* pre-conditions - `requires`
+
+## What is ACSL: Pointers
+
+ACSL allows to reason about, e.g.:
+
+* Pointers
+* Arrays
+* Termination
+
+Consider pointers:
+
+```{c, eval=F}
+  /*@ requires \valid(p) && \valid(q);
+      ensures *p <= *q;
+   */
+  void max_ptr (int *x, int *y) {
+    if(*x >*y) {
+      int tmp =*x;
+      *x =*y;
+      *y = tmp;
+    }
+  }
+```
+
+## What is ACSL: Completeness
+
+Is the following `max_ptr` implementation correct?
+
+```{c, eval=F}
+  /*@ requires \valid(p) && \valid(q);
+      ensures *p <= *q;
+   */
+  void max_ptr (int *x, int *y) {
+    *p = *q = 0;
+  }
+```
+
+The is the following specification *complete*?
+
+```{c, eval=F}
+  /*@ requires \valid(p) && \valid(q);
+      ensures *p <= *q;
+      ensures (*p == \old(*p) && *q == \old(*q)) ||
+              (*p == \old(*q) && *q == \old(*p));
+   */
+  void max_ptr(int*p, int*q);
+```
+
+## What is ACSL: The spec.
+
+The complete specification *v1.4* has `93` pages:
+https://frama-c.com/download/acsl_1.4.pdf
+
+![Feel free to explore](./images/homer.jpg){height=60%}
 
 # Verification Examples
   
