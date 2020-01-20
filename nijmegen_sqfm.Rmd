@@ -12,50 +12,57 @@
 ---
 
 ---
-**Outline:**
+**Global Outline:**
 
 + Software Quality
-    + $\color{gray}{\footnotesize{\text{Motivating Examples}}}$
-    + $\color{gray}{\footnotesize{\text{Software Development}}}$
-    + $\color{gray}{\footnotesize{\text{Software Verification}}}$
 + Programming Languages
-    + $\color{gray}{\footnotesize{\text{Language generations}}}$
-    + $\color{gray}{\footnotesize{\text{Declarative vs. Imperative}}}$
-    + $\color{gray}{\footnotesize{\text{ANSI-C}}}$
 + Formal Methods
-    + $\color{gray}{\footnotesize{\text{Formal Verification}}}$
-    + $\color{gray}{\footnotesize{\text{Hoare Approach}}}$
-    + $\color{gray}{\footnotesize{\text{Edsger Dijkstra}}}$
 + Frama - C
-    + $\color{gray}{\footnotesize{\text{Platform description}}}$
-    + $\color{gray}{\footnotesize{\text{Plugins overview}}}$
-    + $\color{gray}{\footnotesize{\text{What is ACSL}}}$
-+ Verification Examples
++ Verification in practice
 + Concluding remarks
 
 # Software Quality
 
-## Motivating Examples: Major
+## Software Quality: Outline
 
-* `1985`--`1987` -- *Therac-25:*
+* Our Motivation
+* Software Development
+* Software Verification
+
+## Our Motivation: Therac-25
+
+* Years **`1985`--`1987`**:
     * Radiation therapy overdose
     * Control software flaw:
         * Race conditions
     * Death of `6` (six) cancer patients
-* `1996`  -- *Ariane-5 missile:*
+
+![Radiation therapy](./images/therac-25.png){height=70%}
+
+
+## Our Motivation: Ariane-5
+    
+* Year **`1996`**:
     * Missile crash
     * Control software flaw:
         * `64`-bit float to `16`-bit int
     * $`7` billion development program
     * $`500` million cargo
-* `2005` -- *Toyota Camry:*
+
+![Space flights](./images/ariane-5.jpg){height=70%}
+
+## Our Motivation: Toyota Camry
+
+* Year **`2005`**
     * Sudden unintended acceleration:
     * Control software flaw:
         * Recursion causing stack overflow
     * `89` deaths and `57` injuries
     * $`1.2` billion compensations
+
+![Automobiles](./images/camry.jpg){height=80%}
     
-## Motivating Examples: More
+## Our Motivation: Plenty More
 
 The 12 Software Bugs That Caused Epic Failures:  [$\underline{\color{blue}{\text{<link>}}}$](https://www.testbytes.net/blog/12-software-bugs-that-caused-epic-failure/)
 
@@ -89,9 +96,9 @@ Is formally defined in, e.g.: [`ISO-9000:2015`](https://www.iso.org/obp/ui/#iso:
 * No globally recognized definition of Formal Methods[^1].
 * Local attempts to have one[^2], e.g.:
 
-> Formal methods are techniques used to model complex systems as mathematical entities. 
+>"Formal methods are techniques used to model complex systems as mathematical entities."
 
->By building a rigorous model of a complex system, it is possible to verify the system's properties in a more thorough fashion than *empirical testing*.
+>"By building a rigorous model of a complex system, it is possible to verify the system's properties in a more thorough fashion than empirical testing."
 
 [^1]: "Formal Methods for Industrial Critical Systems", S. Gnesi, T. Margaria
 [^2]: ["Formal Methods", Michael Collins, CMU](https://users.ece.cmu.edu/~koopman/des_s99/formal_methods/)
@@ -109,6 +116,12 @@ A program shall satisfy a formal specification of its behavior.
 ![Verification methods](./images/verification_techniques.png){height=60%}
 
 # Programming Languages
+
+## Programming Languages: Outline
+
+* Language generations
+* Declarative vs. Imperative
+* What is ANSI-C?
 
 ## Language generations
 
@@ -134,7 +147,7 @@ A program shall satisfy a formal specification of its behavior.
 
 ![If you laugh, it means you've passed](./images/imp-decl-joke.png){height=110%}
 
-## ANSI-C: Just an old C
+## What is ANSI-C: Old C
 
 **Procedural language:**
 
@@ -144,7 +157,7 @@ Is an imperative language in which the program is built from one or more subrout
 
 `C` is an *imperative* *procedural* language.
 
-**ANSI-C:**
+**Defining ANSI-C:**
 
 `ANSI-C` is a common name for two equivalent language specs:
 
@@ -152,6 +165,12 @@ Is an imperative language in which the program is built from one or more subrout
 * `C90` by International Organization for Standardization (ISO) 
 
 # Formal Methods
+
+## Formal Methods: Outline
+
+* Formal Verification
+* Hoare Approach
+* Dijkstra Extension
 
 ## Formal verification
 
@@ -179,7 +198,7 @@ If $P$ holds before executing $C$ then $Q$ holds afterwards, ONLY if $C$ termina
 
 [^3]: "An Axiomatic Basis for Computer Programming", Tony Hoare, 1969.
 
-## Edsger Dijkstra[^4]
+## Dijkstra Extension[^4]
 
 The *weakest precondition calculus* for 
 
@@ -199,6 +218,12 @@ The *weakest precondition calculus* for
 [^4]: "Guarded commands, non-determinacy and formal derivation of programs", Edsger Dijkstra, 1975
   
 # Frama - C
+
+## Frama - C: Outline
+
+* Platform description
+* Plugins overview
+* What is ACSL?
   
 ## Platform description
 
@@ -218,7 +243,9 @@ You can easily build upon the existing plug-ins to implement your own analysis.
 
 ## Plugins overview: WP
 
-![Frama-C WP plugin](./images/frama-c.wp.png)
+WP -- *weakest precondition* for ACSL specs of ANSI-C programs.
+
+![Frama-C WP plugin](./images/frama-c-wp.png){height=70%}
 
 ## What is ACSL: General
 
@@ -290,14 +317,49 @@ The is the following specification *complete*?
   void max_ptr(int*p, int*q);
 ```
 
-## What is ACSL: The spec.
+## What is ACSL: The whole spec.
 
 The complete specification *v1.4* has `93` pages:
 https://frama-c.com/download/acsl_1.4.pdf
 
 ![Feel free to explore](./images/homer.jpg){height=60%}
 
-# Verification Examples
+# Verification in practice
+
+## Verification in practice: Outline
+
+* Verification Examples
+* Verification Outcomes
+* The morale
+
+## Verification Examples
+
+
+
+## Verification Outcomes
+
+If the proof is $\color{blue}{\bf{OK}}$:
+
+* The program satisfies the specification
+* *Is the specification correct/complete?*
+
+If the proof is $\color{red}{\bf{NOK}}$:
+
+* An *incorrect implementation*
+    * Find counter-example via test generation;
+* A *wrong specification*
+    * Complete spec. and proof analysis;
+    * Change/extend the specification;
+* A *prover's failure*
+    * Alternative provers;
+    * Interactive proof assistants;
   
+## The morale
+    
+![It is not so easy but ... ](./images/easy.jpg){height=70%}
+
 # Concluding remarks
   
+* We had an overview of 
+
+* Questions?
