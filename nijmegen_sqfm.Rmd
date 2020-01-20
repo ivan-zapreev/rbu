@@ -49,7 +49,7 @@
     * $`7` billion development program
     * $`500` million cargo
 
-![Space flights](./images/ariane-5.jpg){height=70%}
+![Space flights](./images/ariane-5.jpg){height=45%}
 
 ## Our Motivation: Toyota Camry
 
@@ -125,7 +125,7 @@ A program shall satisfy a formal specification of its behavior.
 
 ## Language generations
 
-![Generations of Programming languages](./images/languages.png){height=75%}
+![Generations of Programming languages](./images/languages.png){height=70%}
   
 ## Declarative vs. Imperative: Main
 
@@ -330,7 +330,7 @@ https://frama-c.com/download/acsl_1.4.pdf
 
 * Verification Examples
 * Verification Outcomes
-* The morale
+* Experience summary
 
 ## Verification Examples: abs(.)
 
@@ -368,7 +368,7 @@ Extend the specification with a pre-condition:
   }
 ```
 
-The verification is $\color{blue}{\bf{OK}}$, but are we complete (?), consider:
+The verification is $\color{blue}{\bf{OK}}$, but the spec is lame:
 
 ```{c, eval = F}
   /*@ requires INT_MIN < val;
@@ -424,7 +424,7 @@ Consider a lengthy and potentially buggy implementation:
 
 ## Verification Examples: Issue #3
 
-The verification is inconclusive, the entire post condition failed!
+The verification is inconclusive, the prover has failed!
 
 ![What is the actual reason?](./images/faulty.png){height=70%}
 
@@ -450,17 +450,17 @@ into separate statements:
    */
 ```
 
-and then run verification again!
+and then run verification again.
 
 ## Verification Examples: Insights
 
-This is enough hint to know where to look:
+This gives us insights into what could be wrong:
 
 ![Finding the root-causes](./images/split.png){height=70%}
 
 ## Verification Examples: Bugs
 
-Now we can identify the actual bugs:
+Now we can now look into the code and identify bugs:
 
 ```{c, eval = F}
   /*@ requires INT_MIN < val;
@@ -495,12 +495,12 @@ Fixing BUG #2 yields an $\color{blue}{\bf{OK}}$ verification result!
 
 ## Verification Outcomes
 
-If the proof is $\color{blue}{\bf{OK}}$:
+If the verification result is $\color{blue}{\bf{OK}}$:
 
 * The program satisfies the specification
 * *Is the specification correct/complete?*
 
-If the proof is $\color{red}{\bf{NOK}}$:
+If the verification result is $\color{red}{\bf{NOK}}$[^5]:
 
 * An *incorrect implementation*
     * Find counter-example via test generation;
@@ -511,7 +511,9 @@ If the proof is $\color{red}{\bf{NOK}}$:
     * Alternative provers;
     * Interactive proof assistants;
   
-## The morale
+[^5]: This includes a failed verification attempt, e.g. a time out
+  
+## Experience summary
     
 ![It is not so easy but ... ](./images/easy.jpg){height=70%}
 
@@ -537,4 +539,13 @@ $\bf{\color{blue}{\text{Thank you}}}$ and are there any $\bf{\color{red}{\text{q
 ## I appreciate your time!
 
 ![It was great to give you a talk!](./images/thanks.jpg){height=70%}
+
+## More useful links:
+
+* **ACSL Mini-Tutorial:** https://frama-c.com/download/acsl-tutorial.pdf
+* **ACSL-tutorial:** https://frama-c.com/download/acsl-tutorial.pdf
+* **ACSL-by-Example:** https://www.cs.umd.edu/class/spring2016/cmsc838G/frama-c/ACSL-by-Example-12.1.0.pdf
+* **Frama-C website:** https://frama-c.com/
+* **Frama-C v20.0 manual:** https://frama-c.com/download/user-manual-20.0-Calcium.pdf
+* **Frama-C WP tutorial:** https://allan-blanchard.fr/publis/frama-c-wp-tutorial-en.pdf
 
