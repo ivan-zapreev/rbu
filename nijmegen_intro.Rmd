@@ -1,5 +1,5 @@
 ---
-  title: "Reasearch and Teaching"
+  title: "Research and Teaching"
   author: "Dr. Ivan S. Zapreev"
   institute: "Neat Software Designs"
   date: "`r format(Sys.Date())`"
@@ -25,11 +25,103 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction
 
+`20` years work experience:
+
+* `9` years -- Research
+* `5` years -- Teaching
+* `9` years -- Engineering
+
+## Introduction
+
+* Research:
+    * Formal verification
+    * Model checking
+    * Control systems
+    * Machine translation
+* Teaching:
+    * Mathematics
+    * Formal methods
+    * Programming languages
+    * Data bases
+    * Software development
+* Engineering:
+    * User requirements 
+    * Specification and docs.
+    * Design and Architecture
+    * Testing and development
+    * Product ownership
+
+## Introduction
+
+Experience with languages:
+
+* C/C++
+* UML
+* C#
+* Java
+* SQL
+* JavaScript
+* Bash
+* MATLAB
+* Mathematica
+* Python
+* R
+
 ## Research interests: Earlier
+
+**Static program analysis:**
+
+* Information stream quality
+* Hoare-based verification of C
+
+**Model Checking Markov Chains:**
+
+* Statistical model checking CTL
+* Steady-state detection
+
+**Statistical Machine translation:**
+
+* Distributed Machine Translation Infr.
+
+**Cyber physical systems:**
+
+* Computable CTL* model checking
+* Symbolic regression for BDD controllers
 
 ## Research interests: Recent
 
+**Deep learning for control:**
+
+* Neural Networks as Correct-By-Design Controllers:
+    * Performance
+    * Representations
+    * Verifiability
+* Compact control law representations.
+    * Data science models?
+
+**Model driven engineering:**
+
+* Runtime guarantees by verifying OCL constrains on DMs.
+
 ## Research interests: Future
+
+**Artificial Intelligence:**
+
+* True artificial intelligence
+    * Self-motivated
+    * Unsupervised learning
+* Model checking
+    * Design, training, robustness?
+* Static program analysis
+    * --//--
+
+**Domain specific languages:**
+
+* Evolution of DSL meta models
+    * Backwards compatibility
+* Designs for DSL implementations 
+    * Extendible and maintainable
+* Runtime guarantees via static constrains
 
 ## Teaching preferences
 
