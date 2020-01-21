@@ -23,6 +23,8 @@ knitr::opts_chunk$set(echo = FALSE)
 * Teaching 
 * Questions 
 
+# Introduction
+
 ## Introduction
 
 `20` years work experience:
@@ -66,6 +68,8 @@ Experience with languages:
 * Mathematica
 * Python
 * R
+
+# Research interests
 
 ## Research interests: Earlier
 
@@ -123,9 +127,53 @@ Experience with languages:
     * Extendible and maintainable
 * Runtime guarantees via static constrains
 
-## Teaching preferences
+# Teaching 
+
+## Teaching preferences: Earlier
+
+Novosibirsk State University:
+
+* Introduction to UML
+* Unified Modeling Language UML
+* Introduction to C# language
+
+TU Twente (assistant):
+
+* Formal Methods for Software Engineering
+
+RWTH Aachen (assistant):
+
+* Advanced Model Checking
+
+## Teaching preferences: Recent
+
+**Discrete Mathematics:**
+
+* Linear Algebra
+* Regular Languages 
+* Grammars and Finite State Automata's
+* Set theory and propositional logic
+
+**Software engineering:**
+
+* C# ASPX .NET
+* Java Enterprise
+* Database Optimizations
+* Operating systems
+* Quality, Testing, and V-Model
+* SQL and Data modeling for RD
 
 ## Teaching approach
+
+The common basics:
+
+* Motivate
+* Guide
+* Challenge
+* Mentor
+* Use Humor
+
+BKO is yet to be done.
 
 ## Questions 
 
