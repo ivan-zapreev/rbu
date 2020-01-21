@@ -163,17 +163,46 @@ RWTH Aachen (assistant):
 * Quality, Testing, and V-Model
 * SQL and Data modeling for RD
 
-## Teaching approach
+## Teaching approach: Classification
 
-The common basics:
+![Teaching approaches](./images/teaching.jpg){height=70%}
 
-* Motivate
-* Guide
-* Challenge
-* Mentor
+## Teaching approach: Basics
+
+**Connect:**
+
+* Be personal
 * Use Humor
+* Be assertive
 
-BKO is yet to be done.
+**Motivate:**
+
+* Create interest
+* Challenge
+* Track engagement
+
+**Guide:**
+
+* Help if needed
+* Keep challenging
+
+Started on BKO @ Fontys, did not have time to finish.
 
 ## Questions 
 
+**Teaching:**
+
+* What does 80% of teaching include?
+* What choice for teaching is there?
+* Who creates the lecture materials?
+
+**Research:**
+
+* What does 20% of research include?
+* What are the research topic bounds?
+
+**General:**
+
+* Is BKO required?
+    * Is there time given for it?
+* What are the criteria for extension?
