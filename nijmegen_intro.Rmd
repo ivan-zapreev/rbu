@@ -1,0 +1,39 @@
+---
+  title: "Reasearch and Teaching"
+  author: "Dr. Ivan S. Zapreev"
+  institute: "Neat Software Designs"
+  date: "`r format(Sys.Date())`"
+  output:
+    beamer_presentation:
+      slide_level: 2
+      theme: "Hannover"
+      colortheme: "lily"
+      fonttheme: "professionalfonts"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+**General outline:**
+
+* Introduction
+* Research interests
+* Teaching 
+* Questions 
+
+## Introduction
+
+## Research interests: Earlier
+
+## Research interests: Recent
+
+## Research interests: Future
+
+## Teaching preferences
+
+## Teaching approach
+
+## Questions 
+
