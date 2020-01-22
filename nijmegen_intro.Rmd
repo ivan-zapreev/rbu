@@ -20,20 +20,27 @@ knitr::opts_chunk$set(echo = FALSE)
 
 * Introduction
 * Research interests
-* Teaching 
+* Teaching preferences
+* Teaching approach
 * Questions 
 
 # Introduction
 
-## Introduction
+## Introduction: Overview
 
-`20` years work experience:
+`20` years of work experience:
 
-* `9` years -- Research
-* `5` years -- Teaching
-* `9` years -- Engineering
+* Research: `9` years
+* Teaching: `5` years
+* Engineering: `9` years
 
-## Introduction
+International experience:
+
+* Russia
+* The Netherlands
+* Germany
+
+## Introduction: Experiences
 
 * Research:
     * Formal verification
@@ -53,57 +60,58 @@ knitr::opts_chunk$set(echo = FALSE)
     * Testing and development
     * Product ownership
 
-## Introduction
+## Introduction: Software
 
-Experience with languages:
+Experience with languages (*years*):
 
-* C/C++
-* UML
-* C#
-* Java
-* SQL
-* JavaScript
-* Bash
-* MATLAB
-* Mathematica
-* Python
-* R
+* C++ (8)
+* Java (7)
+* UML (6)
+* C (5)
+* C# (2)
+* SQL (2)
+* JavaScript (1)
+* Bash (10)
+* MATLAB (4)
+* Mathematica (1)
+* Python (1)
+* R (1)
 
 # Research interests
 
 ## Research interests: Earlier
 
-**Static program analysis:**
+**Static program analysis:** (BSc, MSc)
 
 * Information stream quality
 * Hoare-based verification of C
 
-**Model Checking Markov Chains:**
+**Model Checking Markov Chains:** (PhD)
 
 * Statistical model checking CTL
 * Steady-state detection
 
-**Statistical Machine translation:**
+**Statistical Machine translation:** (PostDoc)
 
 * Distributed Machine Translation Infr.
 
-**Cyber physical systems:**
+**Cyber physical systems:** (PostDocs)
 
 * Computable CTL* model checking
 * Symbolic regression for BDD controllers
 
 ## Research interests: Recent
 
-**Deep learning for control:**
+**Deep learning for control** (PostDoc, `1` BSc, `3` MSc)
 
 * Neural Networks as Correct-By-Design Controllers:
     * Performance
     * Representations
     * Verifiability
-* Compact control law representations.
+* Compact control law representations:
     * Data science models?
 
-**Model driven engineering:**
+**Model driven engineering** (Altran, `1` MSc)
 
 * Runtime guarantees by verifying OCL constrains on DMs.
 
@@ -127,47 +135,66 @@ Experience with languages:
     * Extendible and maintainable
 * Runtime guarantees via static constrains
 
-# Teaching 
+# Teaching preferences
 
 ## Teaching preferences: Earlier
 
-Novosibirsk State University:
+**Novosibirsk State University (lecturer):** (2000--2004)
 
 * Introduction to UML
 * Unified Modeling Language UML
 * Introduction to C# language
 
-TU Twente (assistant):
+**TU Twente (teaching assistant):** (2004--2006)
 
 * Formal Methods for Software Engineering
 
-RWTH Aachen (assistant):
+**RWTH Aachen (teaching assistant):** (2006--2008)
 
 * Advanced Model Checking
 
 ## Teaching preferences: Recent
 
-**Discrete Mathematics:**
+**Fontys Hogeschool (docent)** (2014--2015)
 
-* Linear Algebra
-* Regular Languages 
-* Grammars and Finite State Automata's
-* Set theory and propositional logic
+* Discrete Mathematics:
+    * Linear Algebra
+    * Regular Languages 
+    * Grammars and Finite State Automata's
+    * Set theory and propositional logic
+* Software engineering:
+    * C# ASPX .NET
+    * Java Enterprise
+    * Database Optimizations
+    * Operating systems
+    * Quality, Testing, and V-Model
+    * SQL and Data modeling for RD
 
-**Software engineering:**
-
-* C# ASPX .NET
-* Java Enterprise
-* Database Optimizations
-* Operating systems
-* Quality, Testing, and V-Model
-* SQL and Data modeling for RD
+# Teaching approach
 
 ## Teaching approach: Classification
 
 ![Teaching approaches](./images/teaching.jpg){height=70%}
 
-## Teaching approach: Basics
+## Teaching approach: Literature
+
+An extensive study is presented in literature[^6]:
+
+* The ideas should follow logically
+* The structure of ideas should be created in class
+* Create a comfortable environment
+* Use theories like: Social Learning, Constructivism, etc
+
+Learning can differ greatly from person to person:
+
+* `5`  different teaching paradigms
+* `32` different teaching models between them.
+
+*"The best and maybe the only possible outcome is to try to determine what methods or combination of methods a teacher should apply to suit the biggest percentage in a class."*
+
+[^6]: "Choosing learning methods suitable for teaching and learning in computer science", Estelle Taylore et al., IADIS, 2013
+
+## Teaching approach: Mine[^7]
 
 **Connect:**
 
@@ -183,26 +210,32 @@ RWTH Aachen (assistant):
 
 **Guide:**
 
+* Define Structure
 * Help if needed
 * Keep challenging
 
-Started on BKO @ Fontys, did not have time to finish.
+[^7]: Started on doing BKO at Fontys.
+
+# Questions
 
 ## Questions 
 
 **Teaching:**
 
 * What does 80% of teaching include?
-* What choice for teaching is there?
+* What choices for teaching are there?
 * Who creates the lecture materials?
 
 **Research:**
 
 * What does 20% of research include?
 * What are the research topic bounds?
+* Participation in conferences?
 
 **General:**
 
-* Is BKO required?
-    * Is there time given for it?
+* Is BKO required and time is given?
+* What is to be done during summer vacations?
+* What are the vacation restrictions?
 * What are the criteria for extension?
+
