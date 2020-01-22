@@ -29,34 +29,151 @@ void swap_good(int* p, int* q){
 }
 
 /*@
-  requires INT_MIN < val;
-  ensures positive_value: function_result: \result >= 0;
-  ensures (val == 0 ==> \result == 0) &&
-          (val > 0 ==> \result == val) &&
-          (val < 0 ==> \result == -val);
-*/
-int abs_good(int val) {
+    ensures \result >= 0;
+ */
+int abs_0(int val) {
   if(val < 0) return -val;
   return val;
 }
 
+/*@ requires INT_MIN < val;
+    ensures \result >= 0;
+ */
+int abs_1(int val) {
+  if(val < 0) return -val;
+  return val;
+}
+
+/*@ requires INT_MIN < val;
+    ensures \result >= 0;
+ */
+int abs_2(int val) {
+  return 1;
+}
+
+/*@ requires INT_MIN < val;
+    ensures (val == 0 ==> \result == 0) &&
+            (val > 0 ==> \result == val) &&
+            (val < 0 ==> \result == -val);
+ */
+int abs_3(int val) {
+  if(val < 0) return -val; 
+  return val;
+}
+
+/*@ requires INT_MIN < val;
+    ensures (val == 0 ==> \result == 0) &&
+            (val > 0 ==> \result == val) &&
+            (val < 0 ==> \result == -val);
+ */
+int abs_4(int val) {
+  if(val == 0) {
+    return 0;
+  } else {
+    if(val < 0) { 
+      return val;
+    } else {
+      return -val;
+    }
+  }
+}
+
+/*@ requires INT_MIN < val;
+    ensures (val == 0 ==> \result == 0);
+    ensures (val > 0 ==> \result == val);
+    ensures (val < 0 ==> \result == -val);
+ */
+int abs_5(int val) {
+  if(val == 0) {
+    return 0;
+  } else {
+    if(val < 0) { 
+      return val;
+    } else {
+      return -val;
+    }
+  }
+}
+
+/*@ requires INT_MIN < val;
+    ensures (val == 0 ==> \result == 0);
+    ensures (val > 0 ==> \result == val);
+    ensures (val < 0 ==> \result == -val);
+*/
+int abs_6(int val) {
+  if(val == 0) {
+    return 0;      //OK
+  } else {
+    if(val < 0) {
+      return val;  //BUG #1, should return -val
+    } else {
+      return -val; //BUG #2, should return val
+    }
+  }
+}
+
+/*@ requires INT_MIN < val;
+    ensures (val == 0 ==> \result == 0);
+    ensures (val > 0 ==> \result == val);
+    ensures (val < 0 ==> \result == -val);
+*/
+int abs_7(int val) {
+  if(val == 0) {
+    return 0;      //OK
+  } else {
+    if(val < 0) {
+      return -val; //OK
+    } else {
+      return -val; //BUG #2, should return val
+    }
+  }
+}
+
+/*@ requires INT_MIN < val;
+    ensures (val == 0 ==> \result == 0);
+    ensures (val > 0 ==> \result == val);
+    ensures (val < 0 ==> \result == -val);
+*/
+int abs_8(int val) {
+  if(val == 0) {
+    return 0;      //OK
+  } else {
+    if(val < 0) {
+      return -val; //OK
+    } else {
+      return val;  //OK
+    }
+  }
+}
+
 /*@
   requires INT_MIN < val;
-  ensures positive_value: function_result: \result >= 0;
-  ensures (val == 0 ==> \result == 0) &&
-          (val > 0 ==> \result == val) &&
-          (val < 0 ==> \result == -val);
+  ensures (val == 0 ==> \result == 0);
+  ensures (val > 0 ==> \result == val);
+  ensures (val < 0 ==> \result == -val);
+*/
+int abs_good(int val) {
+  if(val < 0) return -val; 
+  return val;
+}
+
+
+/*@
+  requires INT_MIN < val;
+  ensures (val == 0 ==> \result == 0);
+  ensures (val > 0 ==> \result == val);
+  ensures (val < 0 ==> \result == -val);
 */
 int abs_bad(int val) {
-//  if(val == 0) {
+  if(val == 0) {
     return 0;
-//  } else {
-//    if(val < 0) {
-//      return val;
-//    } else {
-//      return -val;
-//    }
-//  }
+  } else {
+    if(val < 0) {
+      return val;
+    } else {
+      return -val;
+    }
+  }
 }
 
 /*@
