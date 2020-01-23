@@ -376,7 +376,7 @@ Extend the specification with a pre-condition:
   }
 ```
 
-The verification is $\color{blue}{\bf{OK}}$, but the spec is lame:
+The verification is $\color{blue}{\bf{OK}}$, but the spec is NOT complete:
 
 ```{c, eval = F}
   /*@ requires INT_MIN < val;
@@ -505,17 +505,17 @@ Fixing BUG #2 yields an $\color{blue}{\bf{OK}}$ verification result!
 
 If the verification result is $\color{blue}{\bf{OK}}$:
 
-* The program satisfies the specification
-* *Is the specification correct/complete?*
+* The program satisfies the specification, BUT
+* Is the specification correct/complete?
 
 If the verification result is $\color{red}{\bf{NOK}}$[^5]:
 
-* An *incorrect implementation*
+* An *incorrect implementation*:
     * Find counter-example via test generation;
-* A *wrong specification*
+* A *wrong specification*:
     * Complete spec. and proof analysis;
     * Change/extend the specification;
-* A *prover's failure*
+* A *prover's failure*:
     * Alternative provers;
     * Interactive proof assistants;
   
@@ -523,7 +523,7 @@ If the verification result is $\color{red}{\bf{NOK}}$[^5]:
   
 ## Experience summary
     
-![It is not so easy but ... ](./images/easy.jpg){height=70%}
+![It is not so easy but it helps! ](./images/easy.jpg){height=70%}
 
 # Concluding remarks
 
