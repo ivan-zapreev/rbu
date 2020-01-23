@@ -16,8 +16,8 @@
 
 + Software Quality
 + Programming Languages
-+ Formal Methods
-+ Frama - C
++ Formal Verification
++ Frama - C platform
 + Verification in practice
 + Concluding remarks
 
@@ -25,58 +25,61 @@
 
 ## Software Quality: Outline
 
-* Our Motivation
+* Motivating examples
 * Software Development
 * Software Verification
 
-## Our Motivation: Therac-25
+## Motivating examples: Therac-25
 
-* Years **`1985`--`1987`**:
-    * Radiation therapy overdose
-    * Control software flaw:
-        * Race conditions
-    * Death of `6` (six) cancer patients
+Years **`1985`--`1987`**: Radiation overdose
+
+* Control software flaw:
+    * Race conditions
+* Death of `6` (six) cancer patients
 
 ![Radiation therapy](./images/therac-25.png){height=70%}
 
 
-## Our Motivation: Ariane-5
+## Motivating examples: Ariane-5
     
-* Year **`1996`**:
-    * Missile crash
-    * Control software flaw:
-        * `64`-bit float to `16`-bit int
-    * $`7` billion development program
-    * $`500` million cargo
+Year **`1996`**: Missile crash
+
+* Control software flaw:
+    * `64`-bit float to `16`-bit integer conversion
+* $`137` million Rocket + $`500` million cargo
 
 ![Space flights](./images/ariane-5.jpg){height=45%}
 
-## Our Motivation: Toyota Camry
+## Motivating examples: Toyota
 
-* Year **`2005`**
-    * Sudden unintended acceleration:
-    * Control software flaw:
-        * Recursion causing stack overflow
-    * `89` deaths and `57` injuries
-    * $`1.2` billion compensations
+Year **`2005`**: Sudden unintended acceleration
 
-![Automobiles](./images/camry.jpg){height=80%}
+* Control software flaw:
+    * Recursion causing stack overflow
+* `89` deaths and `57` injuries
+* $`1.2` billion compensations
+
+![Toyota Camry](./images/camry.jpg){height=80%}
     
-## Our Motivation: Plenty More
-
-The 12 Software Bugs That Caused Epic Failures:  [$\underline{\color{blue}{\text{<link>}}}$](https://www.testbytes.net/blog/12-software-bugs-that-caused-epic-failure/)
+## Motivating examples: Plenty More
 
 ![](./images/bugs_everywhere.png){height=70%}
+
+The 12 Software Bugs That Caused Epic Failures:  [$\underline{\color{blue}{\text{<link>}}}$](https://www.testbytes.net/blog/12-software-bugs-that-caused-epic-failure/)
 
 ## Software Development: V-model
 
 ![Software development process](./images/v_model.png){height=70%}
 
 ## Software Development: V & V
-Is formally defined in, e.g.: [`ISO-9000:2015`](https://www.iso.org/obp/ui/#iso:std:iso:9000:ed-4:v1:en:term:3.8.12):
+Software **Validation** and **Verification**.
 
-* **Verification** -- *"Confirmation, through the provision of objective evidence, that specified requirements have been fulfilled."*
-* **Validation** -- *"Confirmation, through the provision of objective evidence, that the requirements for a specific intended use or application have been fulfilled."*
+Formally defined by the International Organization for Standardization, see [`ISO-9000:2015`](https://www.iso.org/obp/ui/#iso:std:iso:9000:ed-4:v1:en:term:3.8.12):
+
+* **Verification** -- *"Confirmation, through the provision of objective evidence, that $\underline{\text{specified requirements}}$ have been fulfilled."*
+
+
+* **Validation** -- *"Confirmation, through the provision of objective evidence, that $\underline{\text{the requirements for a specific}}$ $\underline{\text{intended use or application}}$ have been fulfilled."*
 
 ## Software Development: Testing
 
@@ -87,33 +90,28 @@ Is formally defined in, e.g.: [`ISO-9000:2015`](https://www.iso.org/obp/ui/#iso:
     * Are we building the right product?
     * Does the system meet the needs of the customer?
 
-![Devision of testing types](./images/testing.png){height=50%}
+![Types of testing](./images/testing.png){height=40%}
 
-## Formal Verification
+## Software Verification: Goal
 
-**Facts:**
+A *program* shall satisfy a $\underline{\text{formal specification}}$ of its *behavior*.
 
-* No globally recognized definition of Formal Methods[^1].
-* Local attempts to have one[^2], e.g.:
+![Verification methods](./images/verification_techniques.png){height=60%}
+
+## Software Verification: In formal
+
+**Formal verification[^1]:**
+
+> "Is the act of proving or disproving the correctness of intended algorithms underlying a system with respect to a certain formal specification or property, using formal methods of mathematics."
+
+**Formal methods[^2]:**
 
 >"Formal methods are techniques used to model complex systems as mathematical entities."
 
 >"By building a rigorous model of a complex system, it is possible to verify the system's properties in a more thorough fashion than empirical testing."
 
-[^1]: "Formal Methods for Industrial Critical Systems", S. Gnesi, T. Margaria
+[^1]: ["Formal Verification" on Wikipedia](https://en.wikipedia.org/wiki/Formal_verification)
 [^2]: ["Formal Methods", Michael Collins, CMU](https://users.ece.cmu.edu/~koopman/des_s99/formal_methods/)
-
-**Conclusion:**
-
-Formal methods are techniques suitable for Verification.
-
-## Software Verification
-
-**Goal:**
-
-A program shall satisfy a formal specification of its behavior.
-
-![Verification methods](./images/verification_techniques.png){height=60%}
 
 # Programming Languages
 
@@ -129,12 +127,14 @@ A program shall satisfy a formal specification of its behavior.
   
 ## Declarative vs. Imperative: Main
 
-* *Declarative* -- Expresses what to accomplish without specifying concrete steps.
+Consider the problem of multiplying all array elements by `2`:
+
+* **Declarative** -- Specifies **what** to achieve:
 ```{js, eval=F}
     //Declarative `JavaScript`
     var arr_dbl = arr.map((x) => x * 2)
 ```
-* *Imperative* -- Describes computation in terms of statements that change a program state.
+* **Imperative** -- Defines the **how** steps:
 ```{js, eval=F}
     //Imperative `JavaScript`
     var arr_dbl = []
@@ -149,36 +149,38 @@ A program shall satisfy a formal specification of its behavior.
 
 ## What is ANSI-C: Old C
 
-**Procedural language:**
-
-Is an imperative language in which the program is built from one or more subroutines commonly known as `functions`. 
-
 **`C` language:**
 
 `C` is an *imperative* *procedural* language.
 
+**Procedural language:**
+
+Is an imperative language in which the program is built from one or more subroutines commonly known as `functions`. 
+
 **Defining ANSI-C:**
 
-`ANSI-C` is a common name for two equivalent language specs:
+`ANSI-C` is a common name for two equivalent standards:
 
-* `C89` by American National Standards Institute (ANSI)
-* `C90` by International Organization for Standardization (ISO) 
+* `C89` -- American National Standards Institute (ANSI)
+* `C90` -- International Organization for Standardization (ISO) 
 
-# Formal Methods
+# Formal Verification
 
-## Formal Methods: Outline
+## Formal Verification: Outline
 
-* Formal Verification
+* Verification goal
 * Hoare Approach
 * Dijkstra Extension
 
-## Formal verification
+## Verification goal
 
-**Question:** Does formal *validation* exist?
+Mathematically prove conformance to formal specifications.
 
-![Formal correctness proving](./images/verification_techniques_marked.png){height=55%}
+![Formal correctness proving](./images/verification_techniques_marked_short.png){height=60%}
 
-*Prove* conformance to specifications for *imperative programs*.
+**Consider:**
+
+Hoare/Dijkstra approach for proving correctness of *imperative programs*.
 
 ## Hoare Approach[^3]
 
@@ -217,9 +219,9 @@ The *weakest precondition calculus* for
 
 [^4]: "Guarded commands, non-determinacy and formal derivation of programs", Edsger Dijkstra, 1975
   
-# Frama - C
+# Frama - C platform
 
-## Frama - C: Outline
+## Frama - C platform: Outline
 
 * Platform description
 * Plugins overview
@@ -227,9 +229,15 @@ The *weakest precondition calculus* for
   
 ## Platform description
 
-A plug-in-based open-source cross-platform framework for ANSI-`C` source-code analysis:
+Frama-C is a:
 
-* Browsing unfamiliar code
+* Plug-in-based
+* Open-source 
+* Cross-platform
+
+framework for ANSI-`C` source-code analysis:
+
+* Browse unfamiliar code
 * Static code analysis
 * Dynamic code analysis
 * Code transformations
@@ -252,7 +260,7 @@ WP -- *weakest precondition* for ACSL specs of ANSI-C programs.
 In short:
 
 * ACSL -- ANSI/ISO C Specification Language
-* Allows to formally specify properties of a C program
+* Allows to formally specify properties of C programs
 
 It is all about function contracts:
 
@@ -281,13 +289,13 @@ ACSL allows to reason about, e.g.:
 Consider pointers:
 
 ```{c, eval=F}
-  /*@ requires \valid(p) && \valid(q);
-      ensures *p <= *q;
+  /*@ requires \valid(x) && \valid(y);
+      ensures *x <= *y;
    */
   void max_ptr (int *x, int *y) {
-    if(*x >*y) {
-      int tmp =*x;
-      *x =*y;
+    if(*x > *y) {
+      int tmp = *x;
+      *x = *y;
       *y = tmp;
     }
   }
@@ -298,28 +306,28 @@ Consider pointers:
 Is the following `max_ptr` implementation correct?
 
 ```{c, eval=F}
-  /*@ requires \valid(p) && \valid(q);
-      ensures *p <= *q;
+  /*@ requires \valid(x) && \valid(y);
+      ensures *x <= *y;
    */
   void max_ptr (int *x, int *y) {
-    *p = *q = 0;
+    *x = *y = 0;
   }
 ```
 
-The is the following specification *complete*?
+We need to make our specification **complete**:
 
 ```{c, eval=F}
-  /*@ requires \valid(p) && \valid(q);
-      ensures *p <= *q;
-      ensures (*p == \old(*p) && *q == \old(*q)) ||
-              (*p == \old(*q) && *q == \old(*p));
+  /*@ requires \valid(x) && \valid(y);
+      ensures *x <= *y;
+      ensures (*x == \old(*x) && *y == \old(*y)) ||
+              (*x == \old(*y) && *y == \old(*x));
    */
-  void max_ptr(int*p, int*q);
+  void max_ptr(int *x, int *y);
 ```
 
 ## What is ACSL: The whole spec.
 
-The complete specification *v1.4* has `93` pages:
+The complete ACSL specification *v1.4* has `93` pages:
 https://frama-c.com/download/acsl_1.4.pdf
 
 ![Feel free to explore](./images/homer.jpg){height=60%}
