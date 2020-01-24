@@ -257,23 +257,23 @@ WP -- *weakest precondition* for ACSL specs of ANSI-C programs.
 
 ## What is ACSL: General
 
-In short:
+**In short:**
 
 * ACSL -- ANSI/ISO C Specification Language
 * Allows to formally specify properties of C programs
 
-It is all about function contracts:
+$\underline{\text{An example}}$ function property specification:
 
 ```{c, eval=F}
   /*@ ensures \result >= x && \result >= y;
       ensures \result == x || \result == y;
    */
   int max (int x, int y) {
-    return(x > y) ? x : y;
+    return (x > y) ? x : y;
   }
 ```
 
-A function contract is a combination of:
+A general $\underline{\text{function contract}}$ consists of:
 
 * post-conditions - `ensures`
 * pre-conditions - `requires`
