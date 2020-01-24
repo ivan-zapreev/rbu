@@ -92,13 +92,7 @@ Formally defined by the International Organization for Standardization, see [`IS
 
 ![Types of testing](./images/testing.png){height=40%}
 
-## Software Verification: Goal
-
-A *program* shall satisfy a $\underline{\text{formal specification}}$ of its *behavior*.
-
-![Verification methods](./images/verification_techniques.png){height=60%}
-
-## Software Verification: In formal
+## Software Verification: Formal
 
 **Formal verification[^1]:**
 
@@ -127,7 +121,7 @@ A *program* shall satisfy a $\underline{\text{formal specification}}$ of its *be
   
 ## Declarative vs. Imperative: Main
 
-Consider the problem of multiplying all array elements by `2`:
+Consider a problem of multiplying all array elements by `2`:
 
 * **Declarative** -- Specifies **what** to achieve:
 ```{js, eval=F}
@@ -172,7 +166,13 @@ Is an imperative language in which the program is built from one or more subrout
 * Hoare Approach
 * Dijkstra Extension
 
-## Verification goal
+## Verification goal: Global
+
+A *program* shall satisfy a $\underline{\text{formal specification}}$ of its *behavior*.
+
+![Verification methods](./images/verification_techniques.png){height=60%}
+
+## Verification goal: Proving
 
 Mathematically prove conformance to formal specifications.
 
