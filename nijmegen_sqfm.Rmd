@@ -111,11 +111,11 @@ Formally defined by the International Organization for Standardization, see [`IS
 
 ## Programming Languages: Outline
 
-* Language generations
+* Language Generations
 * Declarative vs. Imperative
 * What is ANSI-C?
 
-## Language generations
+## Language Generations
 
 ![Generations of Programming languages](./images/languages.png){height=70%}
   
