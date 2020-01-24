@@ -17,9 +17,9 @@
 + Software Quality
 + Programming Languages
 + Formal Verification
-+ Frama - C platform
-+ Verification in practice
-+ Concluding remarks
++ Frama-C Framework
++ Verification Practice
++ Concluding Remarks
 
 # Software Quality
 
@@ -141,7 +141,7 @@ Consider a problem of multiplying all array elements by `2`:
 
 ![If you laugh, it means you've passed](./images/imp-decl-joke.png){height=110%}
 
-## What is ANSI-C: Old C
+## What is ANSI-C: An old C
 
 **`C` language:**
 
@@ -162,17 +162,17 @@ Is an imperative language in which the program is built from one or more subrout
 
 ## Formal Verification: Outline
 
-* Verification goal
+* Verification Goal
 * Hoare Approach
 * Dijkstra Extension
 
-## Verification goal: Global
+## Verification Goal: Global
 
 A *program* shall satisfy a $\underline{\text{formal specification}}$ of its *behavior*.
 
 ![Verification methods](./images/verification_techniques.png){height=60%}
 
-## Verification goal: Proving
+## Verification Goal: Proving
 
 Mathematically prove conformance to formal specifications.
 
@@ -180,7 +180,7 @@ Mathematically prove conformance to formal specifications.
 
 **Consider:**
 
-Hoare/Dijkstra approach for proving correctness of *imperative programs*.
+The Hoare/Dijkstra approach for proving correctness of *imperative programs*.
 
 ## Hoare Approach[^3]
 
@@ -202,32 +202,32 @@ If $P$ holds before executing $C$ then $Q$ holds afterwards, ONLY if $C$ termina
 
 ## Dijkstra Extension[^4]
 
-The *weakest precondition calculus* for 
+The *weakest pre-condition calculus* for $\left\{P\right\}C\left\{Q\right\}$
 
-* A predicate transform semantics to mechanize the proofs.
-* Explains how $C$ transforms $P$ into $Q$. 
+* Explains how $C$ transforms $P$ into $Q$;
+* Gives a predicate transform semantics for proofs;
 
-**Backward reasoning**:
+**Backward reasoning**: (*W.P.*)
 
 * Based on $Q$ and $C$ calculate the *weakest pre-condition* $\widehat{P}$ 
-* If $P \implies \widehat{P}$, then the proof is complete
+* If $P \implies \widehat{P}$, then $\left\{P\right\}C\left\{Q\right\}$ holds
 
-**Forward reasoning**:
+**Forward reasoning**: (*S.P.*)
 
 * Based on $P$ and $C$ calculate the *strongest post-condition* $\widehat{Q}$ 
-* If $\widehat{Q} \implies Q$, then the proof is complete
+* If $\widehat{Q} \implies Q$, then $\left\{P\right\}C\left\{Q\right\}$ holds
 
 [^4]: "Guarded commands, non-determinacy and formal derivation of programs", Edsger Dijkstra, 1975
   
-# Frama - C platform
+# Frama-C Framework
 
-## Frama - C platform: Outline
+## Frama-C Framework: Outline
 
-* Platform description
-* Plugins overview
+* Framework Description
+* Plugins Overview
 * What is ACSL?
   
-## Platform description
+## Framework Description
 
 Frama-C is a:
 
@@ -245,11 +245,11 @@ framework for ANSI-`C` source-code analysis:
 
 You can easily build upon the existing plug-ins to implement your own analysis. 
 
-## Plugins overview: Main
+## Plugins Overview: Main
 
 ![Frama-C plugins](./images/frama-c.png)
 
-## Plugins overview: WP
+## Plugins Overview: WP
 
 WP -- *weakest precondition* for ACSL specs of ANSI-C programs.
 
@@ -332,13 +332,13 @@ https://frama-c.com/download/acsl_1.4.pdf
 
 ![Feel free to explore](./images/homer.jpg){height=60%}
 
-# Verification in practice
+# Verification Practice
 
-## Verification in practice: Outline
+## Verification Practice: Outline
 
 * Verification Examples
 * Verification Outcomes
-* Experience summary
+* Experience Summary
 
 ## Verification Examples: abs(.)
 
@@ -521,11 +521,11 @@ If the verification result is $\color{red}{\bf{NOK}}$[^5]:
   
 [^5]: This includes a failed verification attempt, e.g. a time out
   
-## Experience summary
+## Experience Summary
     
 ![It is not so easy but it helps! ](./images/easy.jpg){height=70%}
 
-# Concluding remarks
+# Concluding Remarks
 
 We have looked into:
 
