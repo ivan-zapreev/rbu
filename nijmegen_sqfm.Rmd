@@ -262,7 +262,7 @@ WP -- *weakest precondition* for ACSL specs of ANSI-C programs.
 * ACSL -- ANSI/ISO C Specification Language
 * Allows to formally specify properties of C programs
 
-$\underline{\text{An example}}$ function property specification:
+**An example** function property specification:
 
 ```{c, eval=F}
   /*@ ensures \result >= x && \result >= y;
@@ -273,7 +273,7 @@ $\underline{\text{An example}}$ function property specification:
   }
 ```
 
-A general $\underline{\text{function contract}}$ consists of:
+A general **function contract** consists of:
 
 * post-conditions - `ensures`
 * pre-conditions - `requires`
@@ -314,7 +314,7 @@ Is the following `max_ptr` implementation correct?
   }
 ```
 
-We need to make our specification **complete**:
+Our formal specification must be **complete**:
 
 ```{c, eval=F}
   /*@ requires \valid(x) && \valid(y);
