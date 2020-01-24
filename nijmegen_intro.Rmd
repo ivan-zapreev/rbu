@@ -19,50 +19,50 @@ knitr::opts_chunk$set(echo = FALSE)
 **General outline:**
 
 * Introduction
-* Research interests
-* Teaching preferences
-* Teaching approach
+* Research Interests
+* Teaching Preferences
+* Teaching Approach
 * Questions 
 
 # Introduction
 
 ## Introduction: Overview
 
-`20` years of work experience:
+**`20` years** of work experience:
 
 * Research: `9` years
 * Teaching: `5` years
 * Engineering: `9` years
 
-International experience:
+**International** (teaching) experience:
 
-* Russia
+* Russia Federation
 * The Netherlands
 * Germany
 
 ## Introduction: Experiences
 
-* Research:
-    * Formal verification
-    * Model checking
-    * Control systems
-    * Machine translation
-* Teaching:
+* **Teaching:**
     * Mathematics
     * Formal methods
     * Programming languages
     * Data bases
     * Software development
-* Engineering:
+* **Research:**
+    * Formal verification
+    * Model checking
+    * Control systems
+    * Machine translation
+* **Engineering:**
     * User requirements 
     * Specification and docs.
     * Design and Architecture
     * Testing and development
     * Product ownership
 
-## Introduction: Software
+## Introduction: Prog. Languages
 
-Experience with languages (*years*):
+Experience in **years**:
 
 * C++ (8)
 * Java (7)
@@ -76,10 +76,13 @@ Experience with languages (*years*):
 * Mathematica (1)
 * Python (1)
 * R (1)
+* HTML (2)
+* CSS (1)
+* OQL (1)
 
-# Research interests
+# Research Interests
 
-## Research interests: Earlier
+## Research Interests: Earlier
 
 **Static program analysis:** (BSc, MSc)
 
@@ -88,19 +91,20 @@ Experience with languages (*years*):
 
 **Model Checking Markov Chains:** (PhD)
 
-* Statistical model checking CTL
+* PCTL, CSL, PRCTL, CSRL
+* Numerical and statistical
 * Steady-state detection
 
 **Statistical Machine translation:** (PostDoc)
 
-* Distributed Machine Translation Infr.
+* Distributed Machine Translation Infra.
 
 **Cyber physical systems:** (PostDocs)
 
-* Computable CTL* model checking
+* Computable LTL, CTL, CTL* model checking
 * Symbolic regression for BDD controllers
 
-## Research interests: Recent
+## Research Interests: Recent
 
 **Deep learning for control** (PostDoc, `1` BSc, `3` MSc)
 
@@ -111,11 +115,11 @@ Experience with languages (*years*):
 * Compact control law representations:
     * Data science models?
 
-**Model driven engineering** (Altran, `1` MSc)
+**Model driven engineering** (Product Owner, `1` MSc)
 
 * Runtime guarantees by verifying OCL constrains on DMs.
 
-## Research interests: Future
+## Research Interests: Future
 
 **Artificial Intelligence:**
 
@@ -135,9 +139,9 @@ Experience with languages (*years*):
     * Extendible and maintainable
 * Runtime guarantees via static constrains
 
-# Teaching preferences
+# Teaching Preferences
 
-## Teaching preferences: Earlier
+## Teaching Preferences: Earlier
 
 **Novosibirsk State University (lecturer):** (2000--2004)
 
@@ -153,16 +157,16 @@ Experience with languages (*years*):
 
 * Advanced Model Checking
 
-## Teaching preferences: Recent
+## Teaching Preferences: Recent
 
 **Fontys Hogeschool (docent)** (2014--2015)
 
-* Discrete Mathematics:
+* $\underline{\text{Discrete Mathematics}}$:
     * Linear Algebra
     * Regular Languages 
     * Grammars and Finite State Automata's
     * Set theory and propositional logic
-* Software engineering:
+* $\underline{\text{Software Engineering}}$:
     * C# ASPX .NET
     * Java Enterprise
     * Database Optimizations
@@ -170,31 +174,31 @@ Experience with languages (*years*):
     * Quality, Testing, and V-Model
     * SQL and Data modeling for RD
 
-# Teaching approach
+# Teaching Approach
 
-## Teaching approach: Classification
+## Teaching Approach: Classification
 
-![Teaching approaches](./images/teaching.jpg){height=70%}
+![Teaching Approaches](./images/teaching.jpg){height=70%}
 
-## Teaching approach: Literature
+## Teaching Approach: Literature
 
-An extensive study is presented in literature[^6]:
+An extensive study is presented **in literature**[^6]:
 
 * The ideas should follow logically
 * The structure of ideas should be created in class
 * Create a comfortable environment
 * Use theories like: Social Learning, Constructivism, etc
 
-Learning can differ greatly from person to person:
+**Learning can differ greatly** from person to person:
 
 * `5`  different teaching paradigms
 * `32` different teaching models between them.
 
-*"The best and maybe the only possible outcome is to try to determine what methods or combination of methods a teacher should apply to suit the biggest percentage in a class."*
+*"The best and maybe the only possible outcome is to try to **determine what** methods or combination of methods a teacher should apply to **suit the biggest percentage in a class**."*
 
 [^6]: "Choosing learning methods suitable for teaching and learning in computer science", Estelle Taylore et al., IADIS, 2013
 
-## Teaching approach: Mine[^7]
+## Teaching Approach: Me[^7]
 
 **Connect:**
 
@@ -225,17 +229,16 @@ Learning can differ greatly from person to person:
 * What does 80% of teaching include?
 * What choices for teaching are there?
 * Who creates the lecture materials?
+* Teaching/preparation hours per week?
 
 **Research:**
 
 * What does 20% of research include?
 * What are the research topic bounds?
-* Participation in conferences?
+* Participation in projects/conferences?
+* Supervising BSc. and MSc. students?
 
 **General:**
 
 * Is BKO required and time is given?
-* What is to be done during summer vacations?
-* What are the vacation restrictions?
-* What are the criteria for extension?
-
+* What is to be done during vacations?
